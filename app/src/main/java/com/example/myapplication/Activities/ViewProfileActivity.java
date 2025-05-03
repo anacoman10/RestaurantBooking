@@ -38,7 +38,7 @@ public class ViewProfileActivity extends AppCompatActivity {
 
         butonSchimbaParola = findViewById(R.id.butonSchimbaParola);
         textEmailProfil = findViewById(R.id.textEmailProfil);
-         editParolaProfil = findViewById(R.id.editParolaProfil);
+        editParolaProfil = findViewById(R.id.editParolaProfil);
         /*editEmailProfil = findViewById(R.id.editEmailProfil);
         butonSchimbaEmail = findViewById(R.id.butonSchimbaEmail);*/
 
@@ -58,9 +58,9 @@ public class ViewProfileActivity extends AppCompatActivity {
                         Toast.makeText(ViewProfileActivity.this, "Parola trebuie să conțină minim 6 caractere", Toast.LENGTH_SHORT).show();
                     }
                 }
-                 else {
-                        Toast.makeText(ViewProfileActivity.this, "Introduceți noua parolă", Toast.LENGTH_SHORT).show();
-                    }
+                else {
+                    Toast.makeText(ViewProfileActivity.this, "Introduceți noua parolă", Toast.LENGTH_SHORT).show();
+                }
 
 
             }
@@ -103,29 +103,23 @@ public class ViewProfileActivity extends AppCompatActivity {
         btnGroup3.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
             public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
-                switch(checkedId)
+                if (!isChecked) return;
+                int id = group.getId();
+                if(id==R.id.btnHome3)
                 {
-                    case R.id.btnHome3:{
 
-                        Intent HomeIntent3 = new Intent(group.getContext(), ListActivity.class);
-                        HomeIntent3.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(HomeIntent3);
-                        break;
-                    }
-                    case R.id.btnBookings3: {
-
-                        Intent ProfileIntent3 = new Intent(group.getContext(), ViewBookingsActivity.class);
-                        ProfileIntent3.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(ProfileIntent3);
-                        break;
-
-                    }
-
+                    Intent HomeIntent3 = new Intent(group.getContext(), ListActivity.class);
+                    HomeIntent3.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(HomeIntent3);
                 }
+                else if(id==R.id.btnBookings3) {
+                    Intent ProfileIntent3 = new Intent(group.getContext(), ViewBookingsActivity.class);
+                    ProfileIntent3.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(ProfileIntent3);
+                }
+
             }
         });
-
-
 
     }
     @Override

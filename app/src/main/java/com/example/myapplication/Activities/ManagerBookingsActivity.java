@@ -197,23 +197,18 @@ public class ManagerBookingsActivity extends AppCompatActivity {
         btnGroupManager2.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
             public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
-                switch(checkedId)
-                {
-                    case R.id.btnHomeManager2:{
+                int id =group.getId();
 
-                        Intent BookingsManagerIntent2 = new Intent(group.getContext(), ManagerHomeActivity.class);
-                        BookingsManagerIntent2.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(BookingsManagerIntent2);
-                        break;
-                    }
-                    case R.id.btnProfileManager2: {
+                if(id==R.id.btnHomeManager2){
+                    Intent BookingsManagerIntent2 = new Intent(group.getContext(), ManagerHomeActivity.class);
+                    BookingsManagerIntent2.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(BookingsManagerIntent2);
+                }
+                else if(id==R.id.btnProfileManager2) {
 
-                        Intent ProfileManagerIntent2 = new Intent(group.getContext(), ManagerViewProfileActivity.class);
-                        ProfileManagerIntent2.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(ProfileManagerIntent2);
-                        break;
-
-                    }
+                    Intent ProfileManagerIntent2 = new Intent(group.getContext(), ManagerViewProfileActivity.class);
+                    ProfileManagerIntent2.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(ProfileManagerIntent2);
                 }
             }
         });

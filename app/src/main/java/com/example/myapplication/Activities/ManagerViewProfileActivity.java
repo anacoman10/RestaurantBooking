@@ -73,24 +73,21 @@ public class ManagerViewProfileActivity extends AppCompatActivity {
         btnGroupManager3.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
             public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
-                switch(checkedId)
-                {
-                    case R.id.btnBookingsManager3:{
+                int id = group.getId();
 
-                        Intent BookingsManagerIntent3 = new Intent(group.getContext(), ManagerBookingsActivity.class);
-                        BookingsManagerIntent3.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(BookingsManagerIntent3);
-                        break;
-                    }
-                    case R.id.btnHomeManager3: {
-
-                        Intent ProfileManagerIntent3 = new Intent(group.getContext(), ManagerHomeActivity.class);
-                        ProfileManagerIntent3.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(ProfileManagerIntent3);
-                        break;
-
-                    }
+                if(id==R.id.btnBookingsManager3){
+                    Intent BookingsManagerIntent3 = new Intent(group.getContext(), ManagerBookingsActivity.class);
+                    BookingsManagerIntent3.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(BookingsManagerIntent3);
                 }
+                else if(id==R.id.btnHomeManager3){
+
+                    Intent ProfileManagerIntent3 = new Intent(group.getContext(), ManagerHomeActivity.class);
+                    ProfileManagerIntent3.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(ProfileManagerIntent3);
+
+                }
+
             }
         });
 

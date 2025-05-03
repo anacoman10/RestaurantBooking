@@ -61,23 +61,21 @@ public class ListActivity extends AppCompatActivity {
         btnGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
             public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
-                switch(checkedId)
+                int id = group.getId();
+                if(id==R.id.btnBookings)
                 {
-                    case R.id.btnBookings:{
+                    Intent BookingsIntent = new Intent(group.getContext(), ViewBookingsActivity.class);
+                    BookingsIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(BookingsIntent);
 
-                        Intent BookingsIntent = new Intent(group.getContext(), ViewBookingsActivity.class);
-                        BookingsIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(BookingsIntent);
-                        break;
-                    }
-                    case R.id.btnProfile: {
+                }
+                else if(id==R.id.btnProfile){
 
-                        Intent ProfileIntent = new Intent(group.getContext(), ViewProfileActivity.class);
-                        ProfileIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(ProfileIntent);
-                        break;
+                    Intent ProfileIntent = new Intent(group.getContext(), ViewProfileActivity.class);
+                    ProfileIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(ProfileIntent);
 
-                    }
+
                 }
             }
         });
@@ -87,7 +85,7 @@ public class ListActivity extends AppCompatActivity {
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
- 
+
                         if(error != null)
                         {
                             Log.e("Firestore error",error.getMessage());

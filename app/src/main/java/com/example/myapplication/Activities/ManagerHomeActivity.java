@@ -177,45 +177,45 @@ public class ManagerHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               String strNume = addRestaurantNameEdit.getText().toString();
-               String strOrar = addOrarEdit.getText().toString();
-               String strAdresa = addAdresaEdit.getText().toString();
-               String strNumarLocuri =addNumarLocuriEdit.getText().toString();
-               String strlinkImagine = hiddenLinkTextView.getText().toString();
-               String strManager = mAuth.getCurrentUser().getEmail();
+                String strNume = addRestaurantNameEdit.getText().toString();
+                String strOrar = addOrarEdit.getText().toString();
+                String strAdresa = addAdresaEdit.getText().toString();
+                String strNumarLocuri =addNumarLocuriEdit.getText().toString();
+                String strlinkImagine = hiddenLinkTextView.getText().toString();
+                String strManager = mAuth.getCurrentUser().getEmail();
 
-               System.out.println(strNume+" "+strOrar+strAdresa+" "+strNumarLocuri+" "+strlinkImagine+" "+strManager);
-               Log.e("date restaurant",strNume+" "+strOrar+strAdresa+" "+strNumarLocuri+" "+s+" "+strManager);
+                System.out.println(strNume+" "+strOrar+strAdresa+" "+strNumarLocuri+" "+strlinkImagine+" "+strManager);
+                Log.e("date restaurant",strNume+" "+strOrar+strAdresa+" "+strNumarLocuri+" "+s+" "+strManager);
 
-               if(!(strNume.isEmpty() || strOrar.isEmpty()
+                if(!(strNume.isEmpty() || strOrar.isEmpty()
                         || strAdresa.isEmpty() || strNumarLocuri.isEmpty())){
 
                     if(gasit == 0 ) {
 
                         if (s != null){
                             System.out.println("Nu avem restaurant deja in DB.");
-                        System.out.println(strNume + " " + strOrar + strAdresa + " " + strNumarLocuri + " " + strlinkImagine + " " + strManager);
+                            System.out.println(strNume + " " + strOrar + strAdresa + " " + strNumarLocuri + " " + strlinkImagine + " " + strManager);
 
-                        Restaurant restaurantNou = new Restaurant(s, strNume,
-                                Integer.parseInt(strNumarLocuri), strOrar, strAdresa, strManager);
+                            Restaurant restaurantNou = new Restaurant(s, strNume,
+                                    Integer.parseInt(strNumarLocuri), strOrar, strAdresa, strManager);
 
-                        db.collection("restaurante")
-                                .add(restaurantNou)
-                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                    @Override
-                                    public void onSuccess(DocumentReference documentReference) {
-                                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                        Toast.makeText(ManagerHomeActivity.this, "Restaurantul a fost adăugat", Toast.LENGTH_SHORT).show();
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.w(TAG, "Error adding document", e);
-                                    }
-                                });
+                            db.collection("restaurante")
+                                    .add(restaurantNou)
+                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        @Override
+                                        public void onSuccess(DocumentReference documentReference) {
+                                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                            Toast.makeText(ManagerHomeActivity.this, "Restaurantul a fost adăugat", Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w(TAG, "Error adding document", e);
+                                        }
+                                    });
 
-                    }else{
+                        }else{
                             Toast.makeText(ManagerHomeActivity.this, "Încarcă o imagine", Toast.LENGTH_SHORT).show();
 
                         }
@@ -275,22 +275,20 @@ public class ManagerHomeActivity extends AppCompatActivity {
         btnGroupManager.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
             public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
-                switch(checkedId)
-                {
-                    case R.id.btnBookingsManager:{
+                int id = group.getId();
 
-                        Intent BookingsManagerIntent = new Intent(group.getContext(), ManagerBookingsActivity.class);
-                        BookingsManagerIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(BookingsManagerIntent);
-                        break;
-                    }
-                    case R.id.btnProfileManager: {
 
-                        Intent ProfileManagerIntent = new Intent(group.getContext(), ManagerViewProfileActivity.class);
-                        ProfileManagerIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(ProfileManagerIntent);
-                        break;
-                    }
+                if(id==R.id.btnBookingsManager){
+
+                    Intent BookingsManagerIntent = new Intent(group.getContext(), ManagerBookingsActivity.class);
+                    BookingsManagerIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(BookingsManagerIntent);
+                }
+                else if(id==R.id.btnProfileManager) {
+
+                    Intent ProfileManagerIntent = new Intent(group.getContext(), ManagerViewProfileActivity.class);
+                    ProfileManagerIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(ProfileManagerIntent);
                 }
             }
         });

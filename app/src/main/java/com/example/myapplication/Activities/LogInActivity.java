@@ -56,10 +56,12 @@ public class LogInActivity extends AppCompatActivity {
         String password = passText.getText().toString();
 
         //user list din live database
-        myRef.getRef().addValueEventListener(new ValueEventListener() {
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listaUtilizatori.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    String email="", parola="", tipCont="";
                     for (DataSnapshot ds : postSnapshot.getChildren()) {
                         switch (ds.getKey()) {
                             case "email": {
@@ -79,7 +81,6 @@ public class LogInActivity extends AppCompatActivity {
                     listaUtilizatori.add(new Utilizator(email, parola, tipCont));
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Getting Post failed, log a message

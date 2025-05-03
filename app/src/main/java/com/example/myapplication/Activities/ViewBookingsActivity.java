@@ -76,7 +76,7 @@ public class ViewBookingsActivity extends AppCompatActivity {
                                 break;
                             }
                             case "data":{
-                               // rez.setData(ds.getValue().toString());
+                                // rez.setData(ds.getValue().toString());
                                 data=ds.getValue().toString();
                                 break;
                             }
@@ -91,7 +91,7 @@ public class ViewBookingsActivity extends AppCompatActivity {
                                 break;
                             }
                             case "ora":{
-                               // rez.setOra(ds.getValue().toString());
+                                // rez.setOra(ds.getValue().toString());
                                 ora=ds.getValue().toString();
                                 break;
                             }
@@ -119,19 +119,19 @@ public class ViewBookingsActivity extends AppCompatActivity {
                     }
                     //Rezervare rez = new Rezervare(numeRestaurant, data, adresaRestaurant, ora, nrPersoane,user);
 
-                     if(mAuth.getCurrentUser().getEmail().equals(user))
-                        {
-                            Rezervare rezervareCitita = new Rezervare(numeRestaurant, data, adresaRestaurant, ora, nrPersoane, user, telefon, postSnapshot.getKey());
-                            rezervareCitita.setStare(stare);
-                            listaRez.add(rezervareCitita);
-                        }
+                    if(mAuth.getCurrentUser().getEmail().equals(user))
+                    {
+                        Rezervare rezervareCitita = new Rezervare(numeRestaurant, data, adresaRestaurant, ora, nrPersoane, user, telefon, postSnapshot.getKey());
+                        rezervareCitita.setStare(stare);
+                        listaRez.add(rezervareCitita);
+                    }
                 }
                 if(listaRez.isEmpty()){
                     textNoReservationsClient.setVisibility(View.VISIBLE);
                     bookingRecycler.setVisibility(View.GONE);
                 }
 
-                    adapterBooking.notifyDataSetChanged();
+                adapterBooking.notifyDataSetChanged();
 
 
             }
@@ -150,21 +150,18 @@ public class ViewBookingsActivity extends AppCompatActivity {
         btnGroup2.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
             public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
-                switch(checkedId)
+                int id = group.getId();
                 {
-                    case R.id.btnHome2:{
-
+                    if(id==R.id.btnHome2){
                         Intent HomeIntent2 = new Intent(group.getContext(), ListActivity.class);
                         HomeIntent2.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(HomeIntent2);
-                        break;
-                    }
-                    case R.id.btnProfile2: {
 
+                    }
+                    else if(id==R.id.btnProfile2){
                         Intent ProfileIntent2 = new Intent(group.getContext(), ViewProfileActivity.class);
                         ProfileIntent2.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(ProfileIntent2);
-                        break;
 
                     }
 

@@ -1,37 +1,26 @@
 {
   "project_info": {
-    "project_number": "694594075316",
-    "firebase_url": "https://restaurantappusers-adf69-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "restaurantappusers-adf69",
-    "storage_bucket": "restaurantappusers-adf69.appspot.com"
+    "project_number": "1037062309471",
+    "project_id": "disertatie-restaurant10",
+    "storage_bucket": "disertatie-restaurant10.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:694594075316:android:f6973bee87f33baf43b5e1",
+        "mobilesdk_app_id": "1:1037062309471:android:72a02323002fbe3028fdea",
         "android_client_info": {
           "package_name": "com.example.myapplication"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "694594075316-1slkks6o26pdvakg41l2sllv56p1ck0l.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAp3UVlboqZ6JbOC-fT7n-YRQV30YCgVac"
+          "current_key": "AIzaSyAs1mO_lI4uE00XQM0aRD8Amprbmjvnykc"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "694594075316-1slkks6o26pdvakg41l2sllv56p1ck0l.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
